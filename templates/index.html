@@ -1,0 +1,199 @@
+{% extends  'parent.html' %}
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+
+{% if user is empty %}
+<div class="p-1 mb-1 bg-info text-white">
+    Войдите для сохранения слов!
+</div>
+{% else %}
+
+<div class="p-1 mb-1 bg-success text-white text-left">
+    <b>{{login}}</b> <i>Количество ваших слов = {{count | default(0)}}</i>
+</div>
+
+<div class="container px-lg-4">
+    <div class="row mx-lg-n5 p-1 mb-1 bg-info text-light" role="alert">
+        <div class="col col-lg-1">
+
+        </div>
+
+        <div class="col col-lg-5">
+            <h4>Английский</h4>
+        </div>
+        <div class="col col-lg-4">
+            <h4>Русский</h4>
+        </div>
+        <div class="col col-lg-2    ">
+            <div class="dropdown">
+                <button class="btn btn-success  dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Сортировать
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                    <a class="dropdown-item" href="/Index/SortDate">
+                        По
+                        дате
+                        </button>
+                    </a>
+                    <a class="dropdown-item" href="/Index/SortAlphabetic">
+                        По
+                        алфавиту
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {% set count = 1 %}
+
+    {% for word in words %}
+    {% set page = (current * 10) + count - 10 %}
+
+    <div class="row mx-lg-n5 p-1 mb-1 bg-light text-dark" role="alert">
+        <div class="col col-lg-1">
+            {{page}}
+            <button type="button" class="btn btn-secondary btn-sm"
+                    onclick="if ('speechSynthesis' in window) window.speechSynthesis.speak(new SpeechSynthesisUtterance('{{word.en}}'))">
+                <img src="http://vgtk.ru/uploads/posts/2015-06/medium/1433941010_chto-delat-esli-propal-znachok-gromkosti-s-paneli-zadach.jpg"
+                     width="20px" height="20px">
+            </button>
+        </div>
+
+        <div class="col col-lg-5">
+            <h5>{{word.en}}</h5>
+        </div>
+        <div class="col col-lg-5">
+            <h5>{{word.ru}}</h5>
+        </div>
+        <div class="col col-lg-1">
+            <a onclick="return confirm('Вы точно хотите удалить слово?')" href="/Index/DeleteWord/{{word.id}}">
+                <button type="button" class="btn btn-danger">Удалить</button>
+            </a>
+        </div>
+        {% set count = count + 1 %}
+
+    </div>
+
+    {% endfor %}
+    <hr>
+</div>
+{% if pages != 0 %}
+<nav aria-label="Page navigation example" class="nav pagination">
+    <ul class="pagination  justify-content-end">
+        {% set previous = current - 1 %}
+        <li class="page-item"><a class="page-link" href="/Index/{{method}}/{{previous}}">Previous</a></li>
+        {% for page in 1..pages %}
+        {% if page == current %}
+        <li class="page-item active"><a class="page-link" href="/Index/{{method}}/{{page}}">{{page}}</a></li>
+        {% else %}
+        <li class="page-item"><a class="page-link" href="/Index/{{method}}/{{page}}">{{page}}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% set next = current + 1 %}
+        {% if next >= pages %}
+        {% set next = pages %}
+        {% endif %}
+        <li class="page-item "><a class="page-link" href="/Index/{{method}}/{{next}}">Next</a></li>
+    </ul>
+    <p class=" text-right  user ">Активных пользователей на сайте {{users}}</p>
+</nav>
+{% endif %}
+
+{% endif %}
+
+<header class="header">
+    <div class="overlay">
+        <div class="container">
+            <div class="desc">
+                <div class="row">
+                    <div class="input-group">
+                        <div class="col-lg-8 col-md-8 col-sm-12 right">
+                            <input type="text" aria-label="First name" class="form-control en" id="en" name="en"
+                                   placeholder="en">
+                            <br>
+                            <input type="text" aria-label="Last name" class="form-control ru" id="ru" name="ru"
+                                   placeholder="ru">
+                            <input type="hidden" class="user" name="user_id" value="{{user.id}}">
+
+                            <br>
+                        </div>
+
+                        <div class=" col-lg-2 col-md-2 col-sm-12">
+                            <button class="btn btn-primary btn-md tran" type="submit">Перевести</button>
+                            <br>
+                            <br>
+                            {% if user is not empty %}
+                            <button id="add" class="btn btn-primary btn-md add" type="submit">Сохранить</button>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>
+
+<script>
+    $(document).ready(function () {
+        $('button.tran').on('click', function () {
+            let english = $('input.en').val();
+            if (english !== '') {
+                $.ajax({
+                    method: "POST",
+                    url: "/translate.php",
+                    data: {en: english}
+                })
+                    .done(function (ru) {
+                        $('.add').show();
+
+                        $('input.ru').val(ru);
+                    });
+            }
+            if (english === '') {
+                let russian = $('input.ru').val();
+                if (russian !== '') {
+                    $.ajax({
+                        method: "POST",
+                        url: "/translateru.php",
+                        data: {ru: russian}
+
+                    })
+                        .done(function (en) {
+                            $('.add').show();
+
+                            $('input.en').val(en);
+                        });
+                }
+            }
+        });
+
+        $('button.add').on('click', function () {
+            let english = $('input.en').val();
+            let russian = $('input.ru').val();
+            let user = $('input.user').val();
+
+            $.ajax({
+                method: "POST",
+                url: "/../Logic/save.php",
+                data: {en: english, ru: russian, user_id: user}
+            })
+                .done(function () {
+                    $('input.en').val('');
+                    $('input.ru').val('');
+
+                });
+
+            location.reload();
+        })
+    });
+
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'parent.html' %}
+{% block title %}Регистрация{% endblock %}
+{% block content %}
+<div class="container register">
+
+    <p class="text-danger">{{message}}</p>
+    <h2>Регистрация</h2>
+    <form name="registerform" id="registerform" action="/Logic/register.php" method="post" class="form-horizontal"
+          role="form">
+        <div class="form-group">
+
+
+            <label for="login">Логин<br/>
+                <input type="text" name="login" id="login" class="form-control" value=""
+                       placeholder="Логин"/></label>
+        </div>
+        <div class="form-group">
+
+            <label for="email">E-mail<br/>
+                <input type="email" name="email" id="email" aria-describedby="emailHelp"
+                       placeholder="Электронный адрес" class="form-control"/>
+                <small id="emailHelp" class="form-text text-muted">Мы никогда не передадим вашу электронную почту
+                    кому-либо еще</small>
+            </label>
+
+        </div>
+        <div class="form-group">
+
+            <label for="user_pass">Пароль<br/>
+                <input type="password" name="password" id="user_pass" class="form-control" value="" size="32"
+                       min="6"/></label>
+            <small id="passwordHelp" class="form-text text-muted">Минимум 6 символов</small>
+        </div>
+        <div class="form-group">
+
+
+            <label for="user_pass_repeat">Повторите пароль<br/>
+                <input type="password" name="repeat_password" id="user_pass_repeat" class="form-control" value=""
+                       size="32" min="6"/></label>
+
+
+        </div>
+        <button type="submit" class="btn btn-primary">Регистрация</button>
+
+        <br>
+        <br>
+
+        <p class="regtext">Уже есть аккаунт? <a href="/Index/Enter">Войти</a>!</p>
+    </form>
+
+</div>
+</div>
+{% endblock %}

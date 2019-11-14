@@ -1,0 +1,24 @@
+{% extends 'parent.html' %}
+{% block title %}Восстановать пароль{% endblock %}
+{% block content %}
+
+<div class="container register">
+    <div id="login">
+        <h2>Восстановить</h2>
+        <form name="registerform" id="registerform" action="/Logic/restore.php" method="post">
+
+            <div class="form-group">
+
+                <label for="email"><br/>
+                    <input type="email" name="email" id="email" class="form-control" aria-describedby="emailHelp"
+                           placeholder="Ваш e-mail"/></label>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Отправить</button>
+
+        </form>
+
+    </div>
+</div>
+{% endblock %}

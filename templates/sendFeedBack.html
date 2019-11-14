@@ -1,0 +1,32 @@
+{% extends 'parent.html' %}
+{% block title %} Обратная связь{% endblock %}
+
+{% block content %}
+<div class="contact-form" id="contacts">
+    <div class="container">
+        <form action="/Logic/sendEmail.php" method="post">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <h3>Напишите нам</h3>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-12 right">
+                    <div class="form-group">
+                        <input type="text" name="header" placeholder="Заголовок" class="form-control form-control-lg">
+                    </div>
+
+                    <div class="form-group">
+                        <textarea name="content" class="form-control form-control-lg" rows="5"
+                                  placeholder="Ваше сообщение"></textarea>
+                    </div>
+                    <input type="hidden" name="email" value="{{user.email}}"><br>
+
+                    <button type="submit" class="btn btn-primary btn-blog">Отправить</button>
+                </div>
+
+
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

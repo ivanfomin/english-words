@@ -1,0 +1,96 @@
+{% extends 'parent.html' %}
+{% block title %}Слова {{friend_name}}{% endblock %}
+{% block content %}
+<div class="p-1 mb-1 bg-success text-white text-left">
+    <b> Друг {{friend_name}}, </b> <i>количество слов в изучении - {{count | default(0)}}</i>
+</div>
+<div class="container px-lg-5">
+    <div class="row mx-lg-n5 p-1 mb-1 bg-info text-light" role="alert">
+        <div class="col col-lg-1">
+
+        </div>
+        <div class="col col-lg-5">
+            <h4>Английский</h4>
+        </div>
+        <div class="col col-lg-4">
+            <h4>Русский</h4>
+        </div>
+        <div class="col col-lg-2     ">
+            <div class="dropdown">
+                <button class="btn btn-success  dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Сортировать
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                    <a class="dropdown-item" href="/Friends/SortDate/{{friend_id}}">
+                        По
+                        дате
+                        </button>
+                    </a>
+                    <a class="dropdown-item" href="/Friends/SortAlphabetic/{{friend_id}}">
+                        По
+                        алфавиту
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {% set count = 1 %}
+
+    {% for word in words %}
+    {% set page = (current * 10) + count - 10 %}
+
+    <div class="row mx-lg-n5 p-1 mb-1 bg-light text-dark" role="alert">
+        <div class="col col-lg-1">
+            {{page}}
+            <button type="button" class="btn btn-secondary btn-sm"
+                    onclick="if ('speechSynthesis' in window) window.speechSynthesis.speak(new SpeechSynthesisUtterance('{{word.en}}'))">
+                <img src="http://vgtk.ru/uploads/posts/2015-06/medium/1433941010_chto-delat-esli-propal-znachok-gromkosti-s-paneli-zadach.jpg"
+                     width="20px" height="20px">
+            </button>
+        </div>
+
+        <div class="col col-lg-5">
+            <h5>{{word.en}}</h5>
+        </div>
+        <div class="col col-lg-6">
+            <h5>{{word.ru}}</h5>
+        </div>
+
+        {% set count = count + 1 %}
+
+    </div>
+
+
+    {% endfor %}
+    <hr>
+</div>
+
+<nav aria-label="Page navigation example" class="nav pagination">
+    <ul class="pagination  justify-content-end">
+        {% set previous = current - 1 %}
+        <li class="page-item"><a class="page-link" href="/Friends/{{method}}/{{friend_id}}/{{previous}}">Previous</a>
+        </li>
+        {% for page in 1..pages %}
+        {% if page == current %}
+        <li class="page-item active"><a class="page-link" href="/Friends/{{method}}/{{friend_id}}/{{page}}">{{page}}</a>
+        </li>
+        {% else %}
+        <li class="page-item"><a class="page-link" href="/Friends/{{method}}/{{friend_id}}/{{page}}">{{page}}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% set next = current + 1 %}
+        {% if next >= pages %}
+        {% set next = pages %}
+        {% endif %}
+        <li class="page-item "><a class="page-link" href="/Friends/{{method}}/{{friend_id}}/{{next}}">Next</a></li>
+    </ul>
+    <p class=" text-right  user ">Активных пользователей на сайте {{users}}</p>
+
+</nav>
+
+
+{% endblock %}

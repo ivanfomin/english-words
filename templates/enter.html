@@ -1,0 +1,41 @@
+{% extends 'parent.html' %}
+{% block title %}Войти{{friend_name}}{% endblock %}
+
+{% block content %}
+
+
+<div class="contact-form" id="contacts">
+
+    <div class="container">
+        <p>
+            {{message}}
+        </p>
+        <form name="log" id="loginform" action="/Logic/login.php" method="POST">
+            <div class="row">
+
+                <div class="col-lg-8 col-md-8 col-sm-12 right">
+                    <div class="form-group">
+                        <input type="email" placeholder="e-mail" class="form-control form-control-lg" name="email">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Пароль" class="form-control form-control-lg"
+                               name="password">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-blog">Войти</button>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <br>
+                    <p class="submit">Забыли пароль?
+                        <a style="text-decoration: underline;" href="/Action/Restore">Восстановить</a>
+                    </p>
+
+                    <p>Нет аккаунта? <a style="text-decoration: underline;" href="/Action/Register">Регистрация</a>
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,212 @@
+.card {
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+}
+
+
+.header {
+    background: #ffebcd;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    height: 200px;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    background: rgba(244, 244, 244, 0.769);
+
+}
+
+.col-lg-5 {
+    border-right: 2px solid #333;
+}
+
+
+
+.desc {
+    position: relative;
+    margin-top: 5%;
+
+}
+
+.desc button {
+    background-color: #f97300;
+
+}
+
+.add {
+
+    display: none;
+}
+
+
+.input-group {
+    width: 75%;
+}
+
+#ru {
+    margin-right: 10px;
+}
+
+.list {
+    background: #e8ffe2;
+    position: relative;
+    height: 800px;
+}
+
+.about {
+    position: relative;
+    padding: 1em;
+    margin: 4em 0;
+
+}
+
+.about h1 {
+    color: #f97300;
+}
+
+/*.container h3, h4 {*/
+/*    color: #f97300;*/
+/*    padding-top: 10px;*/
+/*    padding-bottom: 10px;*/
+/*}*/
+ .contact-form col h4 {
+     padding-top: 10%;
+ }
+.about span {
+    display: block;
+    position: absolute;
+    color: #10828C;
+    left: 8em;
+}
+
+.about .about_me {
+
+    padding: 2em;
+    border-left: 4px solid #10828C;
+}
+
+.about #div-img {
+    margin-bottom: 2em;
+}
+
+.about .about_me h3 {
+    color: #10828C;
+}
+
+.about img {
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+}
+
+.about .about_me p {
+    color: #888;
+    line-height: 2em;
+}
+
+.portfolio {
+    position: relative;
+}
+
+.portfolio h1 {
+    color: #f97300;
+
+}
+
+.portfolio img {
+    margin: 1em;
+    width: 100%;
+}
+
+@import url('https://fonts.googleapis.com/css?family=ZCOOL+XiaoWei&display=swap');
+
+.blog {
+    position: relative;
+    margin: 4em;
+    padding: 2em;
+}
+
+.blog h1 {
+    color: #f97300;
+}
+
+.blog .card {
+    box-shadow: 0 0 20px;
+    padding: 1em;
+}
+
+
+.blog .card img {
+    width: 100%;
+}
+
+.blog .card .card-title {
+    font-family: 'ZCOOL XiaoWei', serif;
+
+}
+
+.blog .card:hover {
+    background: #f97300;
+    cursor: pointer;
+}
+
+.contact-form {
+    position: relative;
+    margin: 4em;
+    padding: 1em;
+}
+
+.contact-form h3 {
+    color: #f97300;
+}
+
+.contact-form .right {
+    max-width: 600px;
+}
+
+.contact-form .right .btn-primary {
+    background-color: #f97300;
+}
+
+
+.user {
+    margin-left:25%;
+}
+
+.alpha {
+    margin-left: 5px;
+}
+
+.out {
+    margin-left: 55%;
+}
+
+.pagination {
+    margin-left: 15%;
+}
+
+.addfriend {
+    margin-top: 1%;
+}
+
+.addfriend button {
+    background-color: #f97300;
+}
+
+.addfriend h3 {
+    color: #f97300;
+    margin-bottom: 1%;
+}
+
+.container h3 {
+    color: #f97300;
+}
+
+h2 {
+    color: #f97300;
+}

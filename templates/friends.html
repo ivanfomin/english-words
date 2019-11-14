@@ -1,0 +1,58 @@
+{% extends 'parent.html' %}
+{% block title %} Друзья{% endblock %}
+{% block content %}
+
+<div class="addfriend">
+    <h3>Добавиться в друзья</h3>
+
+    <div class="container  ">
+        <form action="/Logic/addFriend.php" method="POST">
+            <div class="row">
+
+                <div class="col-lg-8 col-md-8 col-sm-12 right">
+
+                    <div class="form-group">
+                        <input type="email" placeholder="почта друга" class="form-control form-control-lg"
+                               name="friend_email">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-12 right">
+
+                    <input type="hidden" name="user_id" value="{{user.id}}">
+
+                    <button type="submit" class="btn btn-primary btn-blog">Добавиться</button>
+                </div>
+
+
+            </div>
+        </form>
+    </div>
+</div>
+<hr>
+<div class="container">
+    <h3>Мои друзья</h3>
+
+    <div class="row">
+
+
+        {% for friend in friends %}
+        <div class="col-lg-8 col-md-8 col-sm-12 right">
+
+            <a href="/Friends/WordsFriends/{{friend.id}}"
+               class="list-group-item list-group-item-action">{{friend.login}}</a>
+            <br>
+        </div>
+
+        <div class="col col-lg-2">
+            <a onclick="return confirm('Вы точно хотите удалить друга {{friend.login}}?')"
+               href="/Friends/DeleteFriend/{{friend.id}}">
+                <button type="button" class="btn btn-danger">Удалить друга</button>
+            </a>
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}
