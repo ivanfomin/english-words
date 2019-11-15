@@ -21,7 +21,7 @@ class Db
 
         $dsn = $driver . ':host=' . $dbconf['host'] . ';dbname=' . $dbconf['dbname'];
         try {
-            $this->dbh = new \PDO($dsn, 'ioan', $dbconf['password'], [
+            $this->dbh = new \PDO($dsn, 'cn17628_translat', $dbconf['password'], [
                 \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',]);
         } catch (\PDOException $exception) {
             echo $exception->getMessage();
