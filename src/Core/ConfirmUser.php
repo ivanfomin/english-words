@@ -23,7 +23,7 @@ class ConfirmUser
 
         $subject = 'Подтверждение регистрации';
 
-        $message = '<p> Перейдите по ссылке для подтверждения регистрации</p> <a href="http://127.0.0.1:8091/Friends/Confirm/' . $rand . '">Подтвердить регистрации на wordsenglish.ru</a>  </br>
+        $message = '<p> Перейдите по ссылке для подтверждения регистрации</p> <a href="https://wordsenglish.ru/Friends/Confirm/' . $rand . '">Подтвердить регистрации на wordsenglish.ru</a>  </br>
             <p>Если Вы этого не делали, пожалуйста игнорируйте это письмо</p>';
 
         $headers = "Content-type: text/html; charset=utf-8 \r\n";
@@ -41,7 +41,7 @@ class ConfirmUser
 
         $subject = 'Восстановление пароля';
 
-        $message = '<p> Перейдите по ссылке для восстановления пароля</p> <a href="http://127.0.0.1:8091/Friends/Restore/' . $this->user->id . '">Перейти для восстановления пароля на wordsenglish.ru</a></p></br>
+        $message = '<p> Перейдите по ссылке для восстановления пароля</p> <a href="https://wordsenglish.ru/Friends/Restore/' . $this->user->id . '">Перейти для восстановления пароля на wordsenglish.ru</a></p></br>
                 <p>Если Вы этого не делали, пожалуйста игнорируйте это письмо</p>';
 
         $headers = "Content-type: text/html; charset=utf-8 \r\n";
