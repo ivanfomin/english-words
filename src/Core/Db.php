@@ -42,7 +42,12 @@ class Db
     {
         $sth = $this->dbh->prepare($sql);
 
-        $result = $sth->execute($data);
+        try {
+            $result = $sth->execute($data);
+        } catch (\PDOException $exception) {
+            header('Location: /Action/NotFound');
+            exit;
+        }
         if (false === $result) {
             var_dump($sth->errorInfo());
             die;
@@ -59,7 +64,12 @@ class Db
     public function query(string $sql, array $data = [], $class = null)
     {
         $sth = $this->dbh->prepare($sql);
-        $result = $sth->execute($data);
+        try {
+            $result = $sth->execute($data);
+        } catch (\PDOException $exception) {
+            header('Location: /Action/NotFound');
+            exit;
+        }
         if (false === $result) {
             var_dump($sth->errorInfo());
             die;

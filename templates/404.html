@@ -1,0 +1,23 @@
+{% extends 'parent.html' %}
+{% block title %}Не найдено{{friend_name}}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="error-template">
+                <h1>
+                    Oops!</h1>
+                <h2>
+                    404 Not Found</h2>
+                <div class="error-details">
+                    Извините, страница не существует!
+                    <br>
+                    {{message}}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

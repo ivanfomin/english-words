@@ -34,8 +34,17 @@ class Friends extends Controller
         $this->view->display("noUser.html");
     }
 
-    public function actionWordsFriends($friend_id, $current = 1)
+    public function actionWordsFriends($friend_id, $current)
     {
+        if (User::findById($friend_id) === false) {
+            $message = 'Друг не найден!';
+            header('Location: /Action/NotFound/' . $message);
+            exit;
+        }
+        $this->view->friend_id = $friend_id;
+
+        $this->view->friend_name = User::findById($friend_id)->login;
+
         $this->view->user = LoginUser::check();
 
         $this->pagination($current, 1, $friend_id);
@@ -44,9 +53,7 @@ class Friends extends Controller
         $method = substr($method, 6);
         $this->view->method = $method;
 
-        $this->view->friend_id = $friend_id;
 
-        $this->view->friend_name = User::findById($friend_id)->login;
 
         $this->view->display("friend_words.html");
 

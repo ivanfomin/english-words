@@ -39,4 +39,10 @@ class Action extends Controller
     {
         $this->view->display('confirm.html');
     }
+
+    public function actionNotFound($message)
+    {
+        $this->view->message = urldecode($message);
+        $this->view->display('404.html');
+    }
 }
