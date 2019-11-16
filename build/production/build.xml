@@ -2,12 +2,16 @@
 
 <project name="DEPLOY" basedir="." default="build">
 
-    <target name="build" depends="pulling" />
+    <target name="build" depends="pulling"/>
 
     <target name="pulling">
-        <resolvepath propertyName="project.dir" file="${project.basedir}" />
-        <echo msg="Source folder: = ${project.dir}" />
-        <exec command='sshpass -p "Worldhello777" ssh cn17628@vh188.timeweb.ru "cd wordsenglish.ru/public_html/ &amp;&amp; git pull"' />
+        <resolvepath propertyName="project.dir" file="${project.basedir}"/>
+        <echo msg="Source folder: = ${project.dir}"/>
+        <exec command='sshpass -p "Worldhello777" ssh cn17628@vh188.timeweb.ru "cd wordsenglish.ru/public_html/ &amp;&amp; git pull"'/>
+    </target>
+
+    <target name="composer">
+        <exec command='sshpass -p "Worldhello777" ssh cn17628@vh188.timeweb.ru "cd wordsenglish.ru/public_html/ &amp;&amp; /opt/php72/bin/php -d memory_limit=1024M /home/c/cn17628/composer/composer.phar install"'/>
     </target>
 
 
