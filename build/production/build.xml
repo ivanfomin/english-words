@@ -2,7 +2,7 @@
 
 <project name="DEPLOY" basedir="." default="build">
 
-    <target name="build" depends="" />
+    <target name="build" depends="pulling" />
 
     <target name="pulling">
         <resolvepath propertyName="project.dir" file="${project.basedir}" />
