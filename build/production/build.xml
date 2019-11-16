@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<project name="DEPLOY" basedir="." default="build">
+
+    <target name="build" depends="" />
+
+    <target name="pulling">
+        <resolvepath propertyName="project.dir" file="${project.basedir}" />
+        <echo msg="Source folder: = ${project.dir}" />
+    </target>
+
+</project>
