@@ -25,6 +25,13 @@
     border-right: 2px solid #333;
 }
 
+.col-sm-5  {
+    border-right: 2px solid #333;
+}
+
+.col-md-5 {
+    border-right: 2px solid #333;
+}
 
 
 .desc {
@@ -182,9 +189,9 @@
     margin-left: 5px;
 }
 
-.out {
-    margin-left: 55%;
-}
+/*.out {*/
+/*    margin-left: 55%;*/
+/*}*/
 
 .pagination {
     margin-left: 15%;

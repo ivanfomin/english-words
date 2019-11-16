@@ -13,19 +13,19 @@
     <b>{{login}}</b> <i>Количество ваших слов = {{count | default(0)}}</i>
 </div>
 
-<div class="container px-lg-4">
-    <div class="row mx-lg-n5 p-1 mb-1 bg-info text-light" role="alert">
-        <div class="col col-lg-1">
+<div class="container px-md-5">
+    <div class="row mx-md-n5  mb-1 bg-info text-light" role="alert">
+        <div class="col col-sm-1">
 
         </div>
 
-        <div class="col col-lg-5">
+        <div class="col col-sm-5">
             <h4>Английский</h4>
         </div>
-        <div class="col col-lg-4">
+        <div class="col col-sm-4">
             <h4>Русский</h4>
         </div>
-        <div class="col col-lg-2    ">
+        <div class="col col-sm-2    ">
             <div class="dropdown">
                 <button class="btn btn-success  dropdown-toggle" type="button" id="dropdownMenuButton"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -54,7 +54,7 @@
     {% set page = (current * 10) + count - 10 %}
 
     <div class="row mx-lg-n5 p-1 mb-1 bg-light text-dark" role="alert">
-        <div class="col col-lg-1">
+        <div class="col col-sm-1 ">
             {{page}}
             <button type="button" class="btn btn-secondary btn-sm"
                     onclick="if ('speechSynthesis' in window) window.speechSynthesis.speak(new SpeechSynthesisUtterance('{{word.en}}'))">
@@ -63,15 +63,17 @@
             </button>
         </div>
 
-        <div class="col col-lg-5">
+        <div class="col col-sm-5">
             <h5>{{word.en}}</h5>
         </div>
-        <div class="col col-lg-5">
+        <div class="col col-sm-5">
             <h5>{{word.ru}}</h5>
         </div>
-        <div class="col col-lg-1">
+        <div class="col col-sm-1 ">
             <a onclick="return confirm('Вы точно хотите удалить слово?')" href="/Index/DeleteWord/{{word.id}}">
-                <button type="button" class="btn btn-danger">Удалить</button>
+                <button type="button" class="btn btn-grey"><img
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL4AAAEKCAMAAACbhh94AAAAb1BMVEX///8AAACBgYFNTU0EBATf39+Pj4+VlZXc3Nzp6ekYGBizs7OwsLAhISGrq6tUVFS5ubnJycl3d3f4+Pibm5tZWVnCwsI2NjaioqIoKCiampry8vJpaWk1NTW+vr5CQkJhYWGHh4dzc3NJSUnPz8+wcz0uAAACjUlEQVR4nO3d63KiMBiAYfAIHhBBrAfc0sP9X2MrgrWrWRInyee27/s3kXnGEdCMmiAgIiIiIiIiIiIiIqLf2TBaTjtaR0Np5e3ypBiEOi2SXNp63fpJy153+COt/buNPv7YStr7PUP9g/mXpvowXEubv8qfzflPj3P+Ts31YZhIq89V56d0M+soOc8tpNVt8bwRverMnjWTB7Frl2ZR+4TqTS+a2ZFblXYtv9Kb3l5kly5NBrWXzUxvetJMT92qtIMvGXzJ4EsGX7I7+c7f8S9ftqG7JvPOtv1seu87O5MP3y4r71payaTZX+2M8Xlf2nyZ1geJy6ruY/qsZ6Y3Xvhw3cxEv5fWXjUxWZgYS2uvM1nXmncfzndbfX0sbb2V/u1rLU29lf6q9F2rZq7Tv/Yk3Qfzn/6iInz7wZcMvmT/OX+jzX/Peg9X9ijr6URERPRj28cC7a3xi8HEe+GLNb7IYrnhojJ8+PDhw4cPHz78n8gvFsfeVIBDPV4cVONv9cMLxah7/mk0Vv1gaHwaX6n4zfd0hPlDFX90Gld+wyCCDx8+fPjw4cOHDx8+fPjw4cOHDx8+fPjw4cOHDx8+fPjw4cOHDx8+fPjw4cOHDx8+fPjw4cOHDx8+fPjw4cOHDx8+fPjw4cOHDx8+fPjw4cOHDx8+fPjw4cOHDx8+fPjw4f9efvM/zDsVX/p/mNPpsZWKX9Xjaani7+qHp2J8p8GH/wB85cnnMpON1P/dSIKfWuOrrm1Oe7fGl9gm3mAX+84q/3x7m50FQeRdP4kt8oOeb77+XsZaLfzqM7v6IPd66yot6z/L/Ol39vWf56+nF1Bp9ay9aJ+Myr7LFq9jezdbIiIiIiIiIiIiv30A1xx2mpvOFCkAAAAASUVORK5CYII="
+                        width="20px" height="20px" alt="Удалить слово" title="Удалить"></button>
             </a>
         </div>
         {% set count = count + 1 %}

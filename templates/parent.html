@@ -35,7 +35,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="LandNav">
-            <ul class="nav navbar-nav mr-4">
+            <ul class="nav navbar-nav mr-auto">
                 {% if user is not empty %}
                 <li class="nav-item active"><a href="/Index/{{method}}#list" aria-pressed="true" class="nav-link">Перевод</a>
                 </li>
@@ -44,7 +44,7 @@
                 <li class="nav-item"><a href="https://github.com/ivanfomin/english-words" aria-pressed="true" class="nav-link">GitHub</a></li>
 
             </ul>
-            <ul class="nav nav-tabs navbar-nav navbar-right out">
+            <ul class="nav nav-tabs navbar-nav navbar-right ">
 
                 <li class="nav-item">
                     <a href="/Action/Logout" class="nav-link">Выйти</a></li>
@@ -62,6 +62,17 @@
     <!--end header-->
     {% block content %}{% endblock %}
 </div>
+<!-- Footer -->
+<footer class="page-footer font-small blue">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2019 Copyright:
+    <a href="#">Wordsenglish.ru</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
 <script>
     $(document).ready(function () {
 //    $(".header").height($(window).height());
