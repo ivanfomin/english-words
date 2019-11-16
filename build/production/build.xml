@@ -7,6 +7,8 @@
     <target name="pulling">
         <resolvepath propertyName="project.dir" file="${project.basedir}" />
         <echo msg="Source folder: = ${project.dir}" />
+        <exec command='sshpass -p "Worldhello777" ssh cn17628@vh188.timeweb.ru "cd wordsenglish.ru/public_html/ &amp;&amp; git pull"' />
     </target>
+
 
 </project>
