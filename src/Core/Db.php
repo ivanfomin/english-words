@@ -44,7 +44,6 @@ class Db
             exit;
         }
         if (false === $result) {
-            var_dump($sth->errorInfo());
             die;
         }
         return true;
@@ -66,7 +65,6 @@ class Db
             exit;
         }
         if (false === $result) {
-            var_dump($sth->errorInfo());
             die;
         }
         if (null === $class) {

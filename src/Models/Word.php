@@ -77,7 +77,7 @@ class Word extends Model
         return $data;
     }
 
-    public static function countWords($user_id)
+    public static function countWords(int $user_id) : int
     {
         $db = Db::getInstance();
         $sql = 'SELECT COUNT(1)  FROM users_words INNER JOIN words ON users_words.word_id = words.id WHERE users_words.user_id=:user_id';
