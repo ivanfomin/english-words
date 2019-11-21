@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ioan
- * Date: 09.12.16
- * Time: 13:10
- */
 
 namespace App\Core;
 

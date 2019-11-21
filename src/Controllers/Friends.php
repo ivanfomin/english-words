@@ -54,7 +54,6 @@ class Friends extends Controller
         $this->view->method = $method;
 
 
-
         $this->view->display("friend_words.html");
 
     }

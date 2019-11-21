@@ -7,10 +7,12 @@ use App\Models\User;
 class ConfirmUser
 {
     public $user;
+
     public function __construct(User $user)
     {
         $this->user = $user;
     }
+
     public function sendConfirm()
     {
         $rand = rand();
@@ -25,6 +27,7 @@ class ConfirmUser
         $headers .= "Reply-To: cn17628@pingin.ru \r\n";
         mail($to, $subject, $message, $headers);
     }
+
     public function restore()
     {
         $to = "<" . $this->user->email . ">";

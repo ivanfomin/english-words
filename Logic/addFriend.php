@@ -23,6 +23,6 @@ if (!empty($_POST['friend_email']) && isset($_POST['friend_email']) && filter_va
     header('Location: /Friends/AddedFriend/' . $user->login);
 
 } else {
-        header('Location: /Friends/Friends/');
+    header('Location: /Friends/Friends/');
 
 }
