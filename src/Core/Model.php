@@ -3,6 +3,7 @@
 namespace App\Core;
 
 //реализация ActiveRecord
+#[\AllowDynamicProperties]
 abstract class Model
 {
     public static $table;
