@@ -14,10 +14,9 @@ class Db
         $driver = 'mysql';
         $dbconf = include(__DIR__ . '/../../conf.php');
 
-        $dsn = $driver . ':host=' . $dbconf['host'] . ';dbname=' . $dbconf['dbname'];
+        $dsn = $driver . ':host=' . $dbconf['host'] . ';port=' . $dbconf['port'] . ';dbname=' . $dbconf['dbname'] .';charset=UTF8';
         try {
-            $this->dbh = new \PDO($dsn, $dbconf['user'], $dbconf['password'], [
-                \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',]);
+            $this->dbh = new \PDO($dsn, $dbconf['user'], $dbconf['password']);
         } catch (\PDOException $exception) {
             echo $exception->getMessage();
         }

@@ -1,6 +1,6 @@
 {
-  "name": "vendor_name/package_name",
-  "description": "description_text",
+  "name": "vendor_name/wordsenglish",
+  "description": "translate_russian_to_english_and_back",
   "minimum-stability": "stable",
   "license": "proprietary",
   "authors": [
@@ -11,7 +11,9 @@
   ],
   "require": {
     "twig/twig": "v3.14.0",
-    "stichoza/google-translate-php": "^v5.2.0"
+    "stichoza/google-translate-php": "^v5.2.0",
+    "ext-pdo": "*",
+    "php": ">=8.3"
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",
