@@ -5,15 +5,23 @@
     <target name="build" depends="pulling, composer"/>
 
     <target name="pulling">
-        <resolvepath propertyName="project.dir" file="${project.basedir}"/>
-        <echo msg="Source folder: = ${project.dir}"/>
-        <exec command='sshpass -p ${db.password} ssh ${db.host} "cd wordsenglish.ru/public_html/ &amp;&amp; git pull"'/>
+        <exec command='sshpass -p ${db.password} ssh ${db.host} "cd ${path_to} &amp;&amp; git pull"'
+        checkreturn="true" passthru="true"/>
     </target>
 
     <target name="composer">
-        <exec command='sshpass -p ${db.password} ssh ${db.host} "cd wordsenglish.ru/public_html/ &amp;&amp; /opt/php72/bin/php -d memory_limit=1024M /home/c/cn17628/composer/composer.phar install"' checkreturn="true" passthru="true"/>
+        <exec command='sshpass -p ${db.password} ssh ${db.host} "cd ${path_to} &amp;&amp; /opt/php83/bin/php -d memory_limit=1024M /home/c/cn17628/composer.phar install"'
+              checkreturn="true" passthru="true"/>
         <echo msg="Ok"/>
     </target>
 
+     <target name="test">
+        <resolvepath propertyName="project.dir" file="${project.basedir}"/>
+        <echo msg="Source folder: = ${project.dir}"/>
+
+        <echo msg="Source db: = ${db.password}"/>
+        <echo msg="Source host: = ${db.host}"/>
+        <echo msg="Source host: = ${path_to}"/>
+   </target>
 
 </project>
