@@ -10,7 +10,7 @@
     </target>
 
     <target name="composer">
-        <exec command='sshpass -p ${db.password} ssh ${db.host} "cd ${path_to} &amp;&amp; /opt/php83/bin/php -d memory_limit=1024M /home/c/cn17628/composer.phar install"'
+        <exec command='sshpass -p ${db.password} ssh ${db.host} "cd ${path_to} &amp;&amp; ${composeri}"'
               checkreturn="true" passthru="true"/>
         <echo msg="Ok"/>
     </target>
