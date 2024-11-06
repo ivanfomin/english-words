@@ -10,7 +10,7 @@
     }
   ],
   "require": {
-    "twig/twig": "v3.14.0",
+    "twig/twig": "v3.14.1",
     "stichoza/google-translate-php": "^v5.2.0",
     "ext-pdo": "*",
     "php": ">=8.3"
